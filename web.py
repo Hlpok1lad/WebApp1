@@ -1,7 +1,6 @@
 import streamlit as st
 import functions
 todos = functions.load_data()
-st.set_page_congig(layout="wide")
 def add_todo():
     todo = st.session_state['new_todo'] + '\n'
     todos.append(todo)
@@ -10,8 +9,7 @@ def add_todo():
 
 st.title('My Todo App')
 st.subheader('This is my todo app')
-st.write('This is app for increasing your <b>productivity</b>',unsafe_allow_html=True)
-st.text_input(label='Add Todo',placeholder='Add a todo...',on_change=add_todo,key='new_todo')
+st.write('This is app for increasing your productivity')
 for index,todo in enumerate(todos):
     checkbox = st.checkbox(todo, key=todo)
     if checkbox:
@@ -22,4 +20,4 @@ for index,todo in enumerate(todos):
 
 
 
-
+st.text_input(label='Add Todo',placeholder='Add a todo...',on_change=add_todo,key='new_todo')
